@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form Auto Filler</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 5px 20px;
+        padding-bottom: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color:indianred;
+        border: 2px solid indianred;
+        color: white;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      button:hover{
+        background-color: white;
+        color:black;
+        border: 2px solid indianred;
+
+      }
+      .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Form Auto Filler</h3>
+      <button id="fillForm">Fill Form</button>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
