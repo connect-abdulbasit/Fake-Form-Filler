@@ -1,14 +1,23 @@
 {
-    "manifest_version": 3,
-    "name": "Form Auto Filler",
-    "version": "1.0",
-    "description": "Automatically fills forms with fake data",
-    "permissions": [
-      "activeTab",
-      "scripting"
-    ],
-    "action": {
-      "default_popup": "popup.html"
+  "name": "Form Auto Filler",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "Automatically fills forms with fake data",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_title": "Fill Form"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
     }
-  }
-  
+  ]
+}
