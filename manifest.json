@@ -5,7 +5,8 @@
   "description": "Automatically fills forms with fake data",
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "contextMenus"
   ],
   "background": {
     "service_worker": "background.js"

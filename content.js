@@ -1,7 +1,9 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "fillForm") {
+  if (request.action === "fillAllForms") {
     fillFormWithFakeData();
-  }
+  } else if (request.action === "clearForm") {
+    clearAllForm();
+  } 
 });
 
 function fillFormWithFakeData() {
@@ -12,7 +14,10 @@ function fillFormWithFakeData() {
   const fakeNumbers = ["42", "99", "123"];
   const fakeDates = ["1990-01-01", "2000-12-30"];
   const fakePasswords = ["password123", "secret"];
-  const fakeComments = ["This is a sample comment", "Lorem ipsum dolor sit amet"];
+  const fakeComments = [
+    "This is a sample comment",
+    "Lorem ipsum dolor sit amet",
+  ];
   const fakeColors = ["#FF5733", "#33FF57", "#3357FF"];
   const fakeMonths = ["2023-05", "2024-06"];
   const fakeTimes = ["12:30", "08:45"];
@@ -48,7 +53,9 @@ function fillFormWithFakeData() {
         element.value = getRandomItem(fakeDates);
         break;
       case "datetime-local":
-        element.value = `${getRandomItem(fakeDates)}T${getRandomItem(fakeTimes)}`;
+        element.value = `${getRandomItem(fakeDates)}T${getRandomItem(
+          fakeTimes
+        )}`;
         break;
       case "password":
         element.value = getRandomItem(fakePasswords);
@@ -83,8 +90,20 @@ function fillFormWithFakeData() {
           element.selectedIndex = 1;
         }
         break;
+      case "submit":
+      case "reset":
+        break;
       default:
-        element.value = "Test Value"; 
+        element.value = "Test Value";
+    }
+  });
+}
+
+function clearAllForm() {
+  const formElements = document.querySelectorAll("input, select, textarea");
+  formElements.forEach((element) => {
+    if (element.type !== "submit") {
+      element.value = "";
     }
   });
 }
