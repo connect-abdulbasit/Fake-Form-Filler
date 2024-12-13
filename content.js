@@ -90,19 +90,23 @@ function fillFormWithFakeData() {
           element.selectedIndex = 1;
         }
         break;
-      case "submit":
-      case "reset":
-        break;
-      default:
-        element.value = "Test Value";
     }
   });
 }
 
 function clearAllForm() {
-  const formElements = document.querySelectorAll("input, select, textarea");
+  const formElements = document.querySelectorAll("input, textarea");
   formElements.forEach((element) => {
-    if (element.type !== "submit") {
+    if (
+      element.type !== "submit" &&
+      element.type !== "reset" &&
+      element.type !== "button" &&
+      element.type !== "checkbox" &&
+      element.type !== "radio" &&
+      element.type !== "file" &&
+      element.type !== "option" &&
+      element.type !== "select"
+    ) {
       element.value = "";
     }
   });
