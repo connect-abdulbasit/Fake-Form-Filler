@@ -45,7 +45,7 @@ chrome.action.onClicked.addListener((tab) => {
       },
       () => {
         // After script injection, send the message to content.js
-        chrome.tabs.sendMessage(tab.id, { action: "fillForm" });
+        chrome.tabs.sendMessage(tab.id, { action: "fillAllForms" });
       }
     );
   }
